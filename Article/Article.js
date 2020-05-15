@@ -132,6 +132,7 @@ const data = [
 	},
 ];
 
+// Create article object HTML
 function articleMaker(articleObject) {
 	let article = document.createElement('div');
 	article.classList.add('article');
@@ -162,6 +163,7 @@ function articleMaker(articleObject) {
 	span.classList.add('expandButton');
 	article.appendChild(span);
 
+	//Add Event Listener to open/close articles on click
 	span.addEventListener('click', (e) => {
 		article.classList.toggle('article-open');
 		if (e.target.textContent === 'See More...') {
@@ -173,34 +175,10 @@ function articleMaker(articleObject) {
 
 	return article;
 }
+
 const articles = document.querySelector('.articles');
 
+//Add articles to page.
 data.forEach((article) => {
 	articles.appendChild(articleMaker(article));
 });
-
-/* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
-
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
-
-    {three separate paragraph elements}
-
-    <span class='expandButton'></span>
-  </div>
-
-  Hint: You will need to use createElement more than once here!
-
-  Your function should take either an object as its one argument, or 5 separate arguments mapping to each piece of the data object above.
-
-  
-
-  Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
-
-  Step 3: Don't forget to return something from your function!
-
-  Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
-
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-*/

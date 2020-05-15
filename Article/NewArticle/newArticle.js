@@ -1,3 +1,4 @@
+//Create HTML for new article submission form
 function newArticleMaker() {
 	let newArticle = document.createElement('form');
 	newArticle.classList.add('new-article');
@@ -29,6 +30,7 @@ function newArticleMaker() {
 	newThirdParagraph.setAttribute('placeholder', 'Third Paragraph:');
 	newArticle.appendChild(newThirdParagraph);
 
+	//Function to create a new article.
 	function createNewArticle(e) {
 		let newArticleText = {
 			title: newTitle.value,
@@ -37,20 +39,23 @@ function newArticleMaker() {
 			secondParagraph: newSecondParagraph.value,
 			thirdParagraph: newThirdParagraph.value,
 		};
+		//push new article to data array and re-render the articles to page.
 		data.push(newArticleText);
 		articles.appendChild(articleMaker(data[data.length - 1]));
+		//Reset form on submission
 		document.forms['new-article-form'].reset();
 		e.preventDefault();
-		console.log(newArticleText);
-		console.log(data);
 	}
-
+	//Create a Submit button to add new article.
 	let submit = document.createElement('input');
 	submit.setAttribute('type', 'submit');
 	newArticle.appendChild(submit);
 	submit.addEventListener('click', createNewArticle);
 
+	//Add button to submit new article to DOM
 	const newArticleButton = document.querySelector('.new-article-button');
+
+	//Make new article div appear on screen
 	newArticleButton.addEventListener('click', (e) => {
 		newArticle.classList.toggle('new-article--open');
 	});
